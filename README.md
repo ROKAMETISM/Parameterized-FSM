@@ -10,7 +10,8 @@ GOAP implemented Gamewith closed loop : Survival game?
 
 -> Tool interface
 
-->Interactive world interface
+->Interactive world interface -> HP
+Chest (inventory) <- store / retrieve interface
 
 Interface / Contract?
 
