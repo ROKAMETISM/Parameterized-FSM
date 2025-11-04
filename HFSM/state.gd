@@ -4,7 +4,6 @@ extends Node
 @export var state_log := false
 var parent:Node
 var fsm:HFSM
-var controllers:Array[Controller]
 func enter() -> void:
 	if state_log:
 		print("++entered : " + get_state_name())
