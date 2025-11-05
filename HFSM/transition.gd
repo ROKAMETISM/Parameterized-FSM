@@ -1,5 +1,5 @@
 class_name HTrans
-extends Resource
+extends RefCounted
 enum Type {
 	Enter,
 	Exit
