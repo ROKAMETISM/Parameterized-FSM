@@ -20,11 +20,10 @@ func _process(delta: float) -> void:
 		var state_change_data = current_state_element.process_frame(delta)
 		change_state(state_change_data)
 
-func init(parent:Node, controllers:Array[Controller]) -> void:
+func init(parent:Node,) -> void:
 	for child : HState in get_children():
 		child.parent = parent
 		child.fsm = self
-		child.controllers = controllers
 	var state_transition_array := []
 	for starting_state_element in starting_states:
 		state_transition_array.append(HTrans.new(starting_state_element, HTrans.Type.Enter))
