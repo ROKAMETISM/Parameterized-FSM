@@ -8,7 +8,8 @@ const SPRITE_CLOSED := preload("uid://b65j7wlxi8o7a")
 var _is_open := false
 
 
-func interact(_source:Node2D) -> void:
+
+func _on_interacted(source:Node2D)->void:
 	_is_open = not _is_open
 	if _is_open:
 		sprite.texture = SPRITE_OPEN
@@ -16,9 +17,3 @@ func interact(_source:Node2D) -> void:
 	else:
 		sprite.texture = SPRITE_CLOSED
 		set_collision_layer_value(1, true)
-
-func highlight()->void:
-	modulate.a = 0.3
-
-func unhighlight()->void:
-	modulate.a = 1.0

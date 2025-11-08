@@ -1,6 +1,10 @@
-# paramaterized-fsm
-Design FSM where States have parameters so that states can be more generalized. Future goal includes implementing hiera
+#TopviewRPG attempt 1
 
+Designing a simple Topview RPG with survival elements.
+
+Features :
+	- Inventory
+	- Interaction
 
 ##Todo 
 

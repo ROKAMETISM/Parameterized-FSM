@@ -4,7 +4,7 @@ class_name Dummy extends CharacterBody2D
 @onready var inventory : Inventory = $Inventory
 var inventory_visualizer : Control = null
 
-var _object_to_interact : Node2D = null
+var _object_to_interact : Interactable = null
 
 func _ready() -> void:
 	_connect_signals()
@@ -14,7 +14,6 @@ func _physics_process(delta: float) -> void:
 	_process_move(delta)
 	_find_interactable()
 	_highlight_interactable()
-	
 	if Input.is_action_just_pressed("interact"):
 		_interact()
 	if Input.is_action_just_pressed("open_inventory"):
@@ -29,12 +28,6 @@ func _process_move(delta:float)->void:
 	velocity = move_direction * 200
 	move_and_collide(velocity * delta)
 
-func _interact()->void:
-	if not _object_to_interact:
-		return
-	if _object_to_interact.has_method("interact"):
-		_object_to_interact.interact(self)
-
 func _find_interactable():
 	if interaction_area.interactables.size() == 0:
 		if _object_to_interact and _object_to_interact.has_method("unhighlight"):
@@ -42,14 +35,17 @@ func _find_interactable():
 		_object_to_interact = null
 		return
 	var min_dist := 0.0
-	var closest : Node2D = null
+	var closest : Interactable = null
 	for _area in interaction_area.interactables:
 		if not is_instance_valid(_area):
 			continue
-		var object : Node2D = _area.get_parent() as Node2D
+		if not _area is Interactable:
+			continue
+		var _interactable = _area as Interactable
+		var object : Node2D = _interactable.parent
 		var dist = (global_position.distance_to(object.global_position))
 		if closest == null or dist < min_dist:
-			closest = object
+			closest = _interactable
 			min_dist = dist
 	if closest == _object_to_interact:
 		return
@@ -57,6 +53,12 @@ func _find_interactable():
 		_object_to_interact.unhighlight()
 	_object_to_interact = closest
 	
+func _interact()->void:
+	if not _object_to_interact:
+		return
+	if _object_to_interact.has_method("interact"):
+		_object_to_interact.interact(self)
+
 
 func _highlight_interactable():
 	if _object_to_interact == null:

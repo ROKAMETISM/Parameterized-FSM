@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://devt8stwh7rjh"
-path="res://.godot/imported/sprite_door_open.png-7f5d8700108cecc61d1a357db2c3e073.ctex"
+path="res://.godot/imported/sprite_door_open.png-17cbb57fdc3ccd0db69b020fa6aeb95a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Interactives/Door/sprite_door_open.png"
-dest_files=["res://.godot/imported/sprite_door_open.png-7f5d8700108cecc61d1a357db2c3e073.ctex"]
+source_file="res://Interactables/Door/sprite_door_open.png"
+dest_files=["res://.godot/imported/sprite_door_open.png-17cbb57fdc3ccd0db69b020fa6aeb95a.ctex"]
 
 [params]
 

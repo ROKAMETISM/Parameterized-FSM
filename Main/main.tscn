@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://bjef2iw7cdxq3" path="res://Main/main_tileset.tres" id="1_2w1kt"]
 [ext_resource type="PackedScene" uid="uid://brmxhb3vwm50p" path="res://Dummy/dummy.tscn" id="1_yh5la"]
-[ext_resource type="PackedScene" uid="uid://bgn32fam44235" path="res://Interactives/Door/door.tscn" id="3_qvhan"]
+[ext_resource type="PackedScene" uid="uid://bgn32fam44235" path="res://Interactables/Door/door.tscn" id="3_qvhan"]
 [ext_resource type="PackedScene" uid="uid://du4bre46qq5ga" path="res://Items/item_pickup.tscn" id="4_liyct"]
 [ext_resource type="Resource" uid="uid://dntdbofhnh8a4" path="res://Items/Content/apple.tres" id="5_ib3t1"]
 [ext_resource type="Resource" uid="uid://dojy3w0dx33x6" path="res://Items/Content/stick.tres" id="6_f6fdm"]
