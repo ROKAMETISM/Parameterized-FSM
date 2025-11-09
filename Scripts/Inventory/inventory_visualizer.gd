@@ -3,7 +3,7 @@ extends Node
 
 const SLOT_SIZE := 16
 const MARGIN := 2
-const SCALE := 2.0
+const SCALE := 1.0
 
 func visualize(inventory : Inventory) -> Control:
 	if inventory.style == null or not is_instance_valid(inventory.style):

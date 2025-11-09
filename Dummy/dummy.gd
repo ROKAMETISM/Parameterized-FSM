@@ -19,6 +19,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact"):
 		_interact()
 	if Input.is_action_just_pressed("open_inventory"):
+		external_inventory = null
 		_visualize_inventory()
 	
 func access_inventory(target_inventory : Inventory)->void:
@@ -76,10 +77,12 @@ func _highlight_interactable():
 func _visualize_inventory():
 	if not _visualizing_inventory():
 		inventory_visualizer = InventoryVisualizer.visualize(inventory)
-		add_child(inventory_visualizer)
 		if external_inventory:
 			external_inventory_visualizer = InventoryVisualizer.visualize(external_inventory)
+			inventory_visualizer.position.y = get_viewport().size.y / 8
+			external_inventory_visualizer.position.y = - get_viewport().size.y / 8
 			add_child(external_inventory_visualizer)
+		add_child(inventory_visualizer)
 		return
 	if inventory_visualizer:
 		remove_child(inventory_visualizer)
@@ -89,6 +92,7 @@ func _visualize_inventory():
 		remove_child(external_inventory_visualizer)
 		external_inventory_visualizer.queue_free()
 		external_inventory_visualizer = null
+		external_inventory = null
 
 func _visualizing_inventory()->bool:
 	return (inventory_visualizer and is_instance_valid(inventory_visualizer)) or (external_inventory_visualizer and is_instance_valid(external_inventory_visualizer))
