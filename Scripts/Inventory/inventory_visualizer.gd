@@ -1,7 +1,7 @@
 #class_name InventoryVisualizer
 extends Node
 
-const SLOT_SIZE := 16
+const SLOT_SIZE := 32
 const MARGIN := 2
 
 func visualize(inventory : Inventory) -> Control:
@@ -32,10 +32,12 @@ func visualize(inventory : Inventory) -> Control:
 	background_size = (SLOT_SIZE+MARGIN)*style.dimensions
 	background_size += Vector2i(MARGIN, MARGIN)
 	background.size = background_size
+	background.set_anchors_preset(Control.PRESET_CENTER)
 	background.position = - background_size / 2
 	background.self_modulate.a = inventory.style.alpha
 	
 	var grid := GridContainer.new()
+	grid.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	grid.position = Vector2(MARGIN, MARGIN)
 	grid.columns = style.dimensions.x
 	grid.add_theme_constant_override("h_separation", MARGIN)
@@ -44,13 +46,16 @@ func visualize(inventory : Inventory) -> Control:
 	for i in inventory.size:
 		var slot := TextureRect.new()
 		slot.texture = style.slot_texture
+		slot.stretch_mode = TextureRect.STRETCH_SCALE
 		slot.size = Vector2(SLOT_SIZE, SLOT_SIZE)
 		slot.self_modulate.a = inventory.style.alpha
 		grid.add_child(slot)
 		if i >= inventory.order.size():
 			continue
 		var item_icon := TextureRect.new()
-		item_icon.size = Vector2(SLOT_SIZE, SLOT_SIZE)
+		#item_icon.size = Vector2(SLOT_SIZE, SLOT_SIZE)
+		item_icon.stretch_mode = TextureRect.STRETCH_SCALE
+		item_icon.set_anchors_preset(Control.PRESET_FULL_RECT)
 		item_icon.texture = inventory.order[i].icon
 		slot.add_child(item_icon)
 		var item_label := Label.new()
@@ -66,7 +71,7 @@ func visualize(inventory : Inventory) -> Control:
 	
 	root.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	root.z_index = 200
-	
+	root.set_anchors_preset(Control.PRESET_FULL_RECT)
 	inventory.visualization = root
 	return root
 

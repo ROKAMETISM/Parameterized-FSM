@@ -86,10 +86,10 @@ func _visualize_inventory(force_close : bool = false):
 		inventory_visualizer = InventoryVisualizer.visualize(inventory)
 		if external_inventory:
 			external_inventory_visualizer = InventoryVisualizer.visualize(external_inventory)
-			inventory_visualizer.position.y = get_viewport().size.y / 8
-			external_inventory_visualizer.position.y = - get_viewport().size.y / 8
-			add_child(external_inventory_visualizer)
-		add_child(inventory_visualizer)
+			inventory_visualizer.position.y = get_viewport().size.y / 4
+			external_inventory_visualizer.position.y = - get_viewport().size.y / 4
+			HUDManager.add_hud(external_inventory_visualizer)
+		HUDManager.add_hud(inventory_visualizer)
 		return
 	_close_inventory_visualization()
 
@@ -98,9 +98,9 @@ func _visualizing_inventory()->bool:
 
 func _close_inventory_visualization()->void:
 	if inventory_visualizer:
-		inventory_visualizer.queue_free()
+		HUDManager.free_hud(inventory_visualizer)
 		inventory_visualizer = null
 	if external_inventory_visualizer:
-		external_inventory_visualizer.queue_free()
+		HUDManager.free_hud(external_inventory_visualizer)
 		external_inventory_visualizer = null
 		external_inventory = null
