@@ -25,6 +25,8 @@ func _physics_process(delta: float) -> void:
 func access_inventory(target_inventory : Inventory)->void:
 	external_inventory = target_inventory
 	_visualize_inventory()
+	if not external_inventory_visualizer:
+		_visualize_inventory()
 
 
 func _connect_signals()->void:
