@@ -17,7 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-HUDManager="*res://Scripts/HUD/hud_manager.gd"
+HUDManager="*res://Scripts/UI/hud_manager.gd"
+UIEventManager="*res://Scripts/UI/ui_event_manager.gd"
 
 [input]
 

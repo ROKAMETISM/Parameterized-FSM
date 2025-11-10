@@ -61,3 +61,7 @@ func visualize(inventory_to_visualize : Inventory) -> Control:
 		item_label.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
 		slot.add_child(item_label)
 	return self
+
+func _on_slot_selected(slot_index : int)->void:
+	print("%d slot selected"%slot_index)
+	
