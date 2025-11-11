@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bfgkkv50j4cux" path="res://Interactables/Chest/chest.gd" id="1_ar8hh"]
 [ext_resource type="Texture2D" uid="uid://dujm6rmi8lqfl" path="res://Assets/Cute_Fantasy_Free/Outdoor decoration/Chest.png" id="1_i6u3o"]
 [ext_resource type="PackedScene" uid="uid://caddqxacvpq2y" path="res://Interactables/interactable.tscn" id="2_2iha1"]
-[ext_resource type="Shader" uid="uid://dh3ja38u0234j" path="res://Testing/testshader.gdshader" id="3_nrcaj"]
+[ext_resource type="Shader" uid="uid://bbqd5o24ax3fj" path="res://Testing/simple_outline.gdshader" id="3_nrcaj"]
 [ext_resource type="Script" uid="uid://bkv2s8uqkofoh" path="res://Scripts/Inventory/inventory.gd" id="4_xfqkh"]
 [ext_resource type="Resource" uid="uid://c2mddfurrjh2y" path="res://Scripts/Inventory/Styles/chest_style.tres" id="5_tykjl"]
 
@@ -15,11 +15,7 @@ size = Vector2(14, 13)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0xk1n"]
 shader = ExtResource("3_nrcaj")
 shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/width = 1.0
-shader_parameter/pattern = 0
-shader_parameter/inside = false
-shader_parameter/add_margins = true
-shader_parameter/number_of_images = Vector2(1, 1)
+shader_parameter/enable = false
 
 [node name="Chest" type="StaticBody2D"]
 script = ExtResource("1_ar8hh")
