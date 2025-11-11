@@ -46,6 +46,7 @@ func visualize(inventory_to_visualize : Inventory) -> Control:
 		slot.custom_minimum_size = Vector2(SLOT_SIZE, SLOT_SIZE)
 		slot.self_modulate.a = inventory_to_visualize.style.alpha
 		slot.index = i
+		slot.selected.connect(_on_slot_selected)
 		grid.add_child(slot)
 		if i >= inventory_to_visualize.order.size():
 			continue
@@ -62,6 +63,6 @@ func visualize(inventory_to_visualize : Inventory) -> Control:
 		slot.add_child(item_label)
 	return self
 
-func _on_slot_selected(slot_index : int)->void:
-	print("%d slot selected"%slot_index)
+func _on_slot_selected(slot_index : int, shift : bool, ctrl : bool)->void:
+	print("%d slot selected %s %s"%[slot_index, "Shift" if shift else "", "CTRL" if ctrl else ""])
 	
