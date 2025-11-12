@@ -30,7 +30,7 @@ func get_item(item:Item, amount:int = 1)->int:
 	if data[item] > amount:
 		data[item] -= amount
 		updated.emit(self)
-		return data[item]
+		return amount
 	var remain := data[item]
 	data.erase(item)
 	order.erase(item)

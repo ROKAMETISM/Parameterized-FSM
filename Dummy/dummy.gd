@@ -115,4 +115,13 @@ func _on_ui_inventory_input(inv:Inventory, item:Item, amount:int):
 		elif inv == external_inventory:
 			external_inventory.get_item(item, amount)
 			inventory.add_item(item, amount)
-			
+	elif inventory_visualizer:
+		if inv != inventory:
+			return
+		inventory.get_item(item, amount)
+		var pickup : ItemPickup = Preloads.SCENE_PICKUP.instantiate()
+		pickup.item_type = item
+		pickup.amount = amount
+		pickup.global_position = global_position
+		get_tree().current_scene.add_child(pickup)
+		
