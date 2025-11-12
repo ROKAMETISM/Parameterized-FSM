@@ -126,12 +126,15 @@ func _close_inventory_visualization()->void:
 
 func _on_ui_inventory_input(inv:Inventory, item:Item, amount:int, type:int):
 	if inventory_visualizer and external_inventory_visualizer:
+		var target : Inventory
 		if inv == inventory:
-			inventory.get_item(item, amount)
-			external_inventory.add_item(item, amount)
+			target = iterate_type_to_inventory(type, external_inventory, tools)
 		elif inv == external_inventory:
-			external_inventory.get_item(item, amount)
-			inventory.add_item(item, amount)
+			target = iterate_type_to_inventory(type, inventory, tools)
+		elif inv == tools:
+			target = iterate_type_to_inventory(type, inventory, external_inventory)
+		inv.get_item(item, amount)
+		target.add_item(item, amount)
 	elif inventory_visualizer:
 		match type:
 			0:
@@ -150,4 +153,8 @@ func _on_ui_inventory_input(inv:Inventory, item:Item, amount:int, type:int):
 					tools.add_item(item, amount)
 				else:
 					inventory.add_item(item, amount)
-		
+
+func iterate_type_to_inventory(type:int, inv1 : Inventory, inv2:Inventory)->Inventory:
+	if type == 0 : return inv1
+	elif type == 1:  return inv2
+	return inv1

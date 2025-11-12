@@ -12,5 +12,4 @@ slot_texture = ExtResource("3_2fu6a")
 slot_patch_margin = 3
 grid_margin = 3
 background_margin = 5
-alpha = 1.0
 metadata/_custom_type_script = "uid://bd83660tkbwn8"
