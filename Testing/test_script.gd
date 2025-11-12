@@ -12,7 +12,7 @@ func hand_sort()->void:
 		return
 	for i in hand.size():
 		# i : 0 -> hand.size()-1
-		var card_rotation = -HAND_ROTATION_RANGE * hand.size() + i / (hand.size()-1) * 2 * HAND_ROTATION_RANGE * hand.size()
+		var card_rotation = -HAND_ROTATION_RANGE * hand.size() + i / (hand.size()-1.0) * 2 * HAND_ROTATION_RANGE * hand.size()
 		hand[i].rotation = card_rotation
 		
 
