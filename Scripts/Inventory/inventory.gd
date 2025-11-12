@@ -1,7 +1,5 @@
 class_name Inventory extends Node
 
-const INVENTORY_UI : PackedScene = preload("uid://bhjhobr55mp1p")
-
 var data : Dictionary[Item, int]
 var order : Array[Item]
 var size := 1
@@ -44,7 +42,7 @@ func _to_string() -> String:
 
 func visualize()->InventoryUI:
 	if not visualization:
-		visualization = INVENTORY_UI.instantiate()
+		visualization = Preloads.SCENE_INVENTORY_UI.instantiate()
 		updated.connect(visualization.visualize)
 		visualization.inventory = self
 	return visualization

@@ -3,6 +3,7 @@ extends Control
 
 const SLOT_SIZE := 32
 const INVENTORY_SLOT : PackedScene = preload("uid://cklbnqtl3pcjn")
+const SLOT_LABEL_SETTINGS : LabelSettings = preload("uid://cnnvutffqpqar")
 
 @onready var background : NinePatchRect = %Background
 @onready var grid : GridContainer = %Grid
@@ -56,7 +57,7 @@ func visualize(inventory_to_visualize : Inventory) -> Control:
 		slot.add_child(item_icon)
 		var item_label := Label.new()
 		item_label.set_anchors_preset(Control.PRESET_FULL_RECT)
-		item_label.label_settings = preload("uid://cnnvutffqpqar")
+		item_label.label_settings = SLOT_LABEL_SETTINGS
 		item_label.text = str(inventory_to_visualize.data[inventory_to_visualize.order[i]])
 		item_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		item_label.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
