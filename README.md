@@ -57,10 +57,18 @@ Studying shader is one of the future goals of this project.
 ## Todo 
 
 -> Tool interface
-
+sd
 ->Interactive world interface -> HP
 
-study shader
+->study shader
+
+->Toolbar usage
+
+->Attacking
+
+->Crafting
+
+->HP system
 
 "Axe" -> chop tree
 
