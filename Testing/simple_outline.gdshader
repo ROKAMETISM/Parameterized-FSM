@@ -35,16 +35,21 @@ void fragment() {
 	vec2 uv = UV;
 
 	vec2 texture_pixel_size = vec2(1.0) / (vec2(1.0) / TEXTURE_PIXEL_SIZE + vec2(2.0) * vec2(1.0));
-	
-	uv = (uv - texture_pixel_size) * TEXTURE_PIXEL_SIZE / texture_pixel_size;
+
+	uv = (uv - texture_pixel_size - 0.0) * TEXTURE_PIXEL_SIZE / texture_pixel_size;
+
 	if (enable)
 		{
-		COLOR = texture(TEXTURE, uv) * modulate;
-		if ((COLOR.a > 0.0) == false && hasContraryNeighbour(uv, TEXTURE_PIXEL_SIZE, TEXTURE))
-			{
+		if (uv != clamp(uv, vec2(0.0), vec2(1.0))) {
+			COLOR.a = 0.0;
+		} else {
+			COLOR = texture(TEXTURE, uv) * modulate;
+		}
+		
+
+		if ((COLOR.a > 0.0) == false && hasContraryNeighbour(uv, TEXTURE_PIXEL_SIZE, TEXTURE)) {
 			COLOR.rgb = color.rgb * modulate.rgb;
 			COLOR.a += (1.0 - COLOR.a) * color.a * modulate.a;
-			}
 		}
-	COLOR.rg = texture_pixel_size;
 	}
+}
