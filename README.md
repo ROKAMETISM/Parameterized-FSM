@@ -52,15 +52,13 @@ Highlighting an interactable object is implemented by outlining the sprite of th
 
 I copied the outline shader code from the internet, and modified it so that it can be toggled real-time via code.
 
-Studying shader is one of the future goals of this project.
+
 
 ## Todo 
 
 -> Tool interface
-sd
-->Interactive world interface -> HP
 
-->study shader
+->Interactive world interface -> HP
 
 ->Toolbar usage
 
